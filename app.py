@@ -1,6 +1,9 @@
 from fastapi import *
 from fastapi.responses import FileResponse
+from routers import attraction, mrts
 app=FastAPI()
+app.include_router(mrts.router)
+app.include_router(attraction.router)
 
 # Static Pages (Never Modify Code in this Block)
 @app.get("/", include_in_schema=False)
@@ -15,3 +18,8 @@ async def booking(request: Request):
 @app.get("/thankyou", include_in_schema=False)
 async def thankyou(request: Request):
 	return FileResponse("./static/thankyou.html", media_type="text/html")
+
+
+if __name__ ==  "__main__":
+    import uvicorn
+    uvicorn.run(app, host= "0.0.0.0", port= 8000)
