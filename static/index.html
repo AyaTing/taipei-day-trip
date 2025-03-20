@@ -1,11 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Index</title>
-</head>
-<body>
-  
-</body>
+<html lang="zh-tw">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>台北一日遊</title>
+    <link rel="stylesheet" href="/static/css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header>
+      <nav class="title-bar">
+        <div class="title-container">
+          <h1 class="title">台北一日遊</h1>
+          <div class="nav-container">
+            <a href="#" class="order-button">預定行程</a
+            ><a href="#" class="login-button">登入/註冊</a>
+          </div>
+        </div>
+      </nav>
+      <section class="hero">
+        <div class="slogan-container">
+          <h2>輕鬆享受台北一日悠閒</h2>
+          <p>探索每個角落，體驗城市的深度旅遊行程</p>
+          <search class="search-container">
+            <label for="search"></label>
+            <input
+              type="text"
+              placeholder="輸入景點名稱查詢"
+              name="search"
+              class="search-input"
+            /><button class="search-button" type="submit">
+              <img src="/static/icons/search.png" alt="search-button" />
+            </button>
+          </search>
+        </div>
+      </section>
+    </header>
+    <main>
+      <nav class="carousel-container">
+        <button class="carousel-left-button">
+          <img
+            src="/static/icons/button_arrow_left.png"
+            alt="carousel-control"
+          />
+        </button>
+        <div class="carousel"></div>
+        <button class="carousel-right-button">
+          <img
+            src="/static/icons/button_arrow_right.png"
+            alt="carousel-control"
+          />
+        </button>
+      </nav>
+      <section class="attraction-container"></section>
+    </main>
+    <footer>COPYRIGHT © 2021 台北一日遊</footer>
+    <script src="/static/js/script.js"></script>
+  </body>
 </html>
