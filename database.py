@@ -23,8 +23,32 @@ except mysql.connector.Error as err:
     print(f"無法建立連線池：{err}")
     raise
 
+# @contextmanager
+# def get_db():
+#     try:
+#         db = connection_pool.get_connection()
+#         try:
+#             yield db
+#         finally:
+#             db.close()
+#     except mysql.connector.Error as err:
+#         print(f"資料庫連線失敗：{err}")
+#         raise
+
+# def get_db_dependency():
+#     try:
+#         db = connection_pool.get_connection()
+#         try:
+#             yield db
+#         finally:
+#             db.close()
+#     except mysql.connector.Error as err:
+#         print(f"資料庫連線失敗：{err}")
+#         raise
+
+
 @contextmanager
-def get_db():
+def get_db_connection():
     try:
         db = connection_pool.get_connection()
         try:
@@ -35,16 +59,13 @@ def get_db():
         print(f"資料庫連線失敗：{err}")
         raise
 
+def get_db():
+    return get_db_connection()
+
 def get_db_dependency():
-    try:
-        db = connection_pool.get_connection()
-        try:
-            yield db
-        finally:
-            db.close()
-    except mysql.connector.Error as err:
-        print(f"資料庫連線失敗：{err}")
-        raise
+    with get_db_connection() as db:
+        yield db
+
 
 def save_attraction_data(attraction_data, image_urls):
     with get_db() as db:
