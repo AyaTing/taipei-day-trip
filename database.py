@@ -23,30 +23,6 @@ except mysql.connector.Error as err:
     print(f"無法建立連線池：{err}")
     raise
 
-# @contextmanager
-# def get_db():
-#     try:
-#         db = connection_pool.get_connection()
-#         try:
-#             yield db
-#         finally:
-#             db.close()
-#     except mysql.connector.Error as err:
-#         print(f"資料庫連線失敗：{err}")
-#         raise
-
-# def get_db_dependency():
-#     try:
-#         db = connection_pool.get_connection()
-#         try:
-#             yield db
-#         finally:
-#             db.close()
-#     except mysql.connector.Error as err:
-#         print(f"資料庫連線失敗：{err}")
-#         raise
-
-
 @contextmanager
 def get_db_connection():
     try:
