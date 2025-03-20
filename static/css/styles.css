@@ -10,6 +10,8 @@
 
 body {
   min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
 }
 
 h1,
@@ -127,6 +129,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex: 1 0 auto;
 }
 
 .carousel-container {
@@ -240,6 +243,7 @@ footer {
   background-color: #757575;
   color: #ffffff;
   margin-top: 40px;
+  flex-shrink: 0;
 }
 
 @media screen and (max-width: 1199px) {
