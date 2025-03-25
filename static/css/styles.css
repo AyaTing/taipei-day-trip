@@ -206,6 +206,12 @@ main {
   height: 242px;
   border: #e8e8e8 1px solid;
   border-radius: 5px;
+  cursor: pointer;
+}
+
+.attraction-card:hover {
+  filter: brightness(1.2);
+  border: gray 1px solid;
 }
 .attraction-image {
   border-radius: 5px 5px 0px 0px;
@@ -289,7 +295,6 @@ footer {
 
   .attraction-card {
     width: 100%;
-    max-width: 330px;
     height: 260px;
   }
 

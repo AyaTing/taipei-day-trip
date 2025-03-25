@@ -1,11 +1,103 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Attraction</title>
-</head>
-<body>
-  
-</body>
+<html lang="zh-tw">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>台北一日遊</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/attraction.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="title-bar">
+        <div class="title-container">
+          <a href="/"> <h1 class="title">台北一日遊</h1></a>
+          <div class="nav-container">
+            <a href="#" class="order-button">預定行程</a
+            ><a href="#" class="login-button">登入/註冊</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="attraction-container">
+        <div class="slide-container">
+          <button class="slide-left-button">
+            <img
+              src="/static/icons/slide_left_button.png"
+              alt="slide-control"
+            />
+          </button>
+          <div class="slide"></div>
+          <button class="slide-right-button">
+            <img
+              src="/static/icons/slide_right_button.png"
+              alt="slide-control"
+            />
+          </button>
+          <div class="dots"></div>
+        </div>
+        <div class="order-container">
+          <form action="" method="post" class="tour-order-form">
+            <h3>訂購導覽行程</h3>
+            <p>以此景點為中心的一日行程，帶您探索城市角落故事</p>
+            <div>
+              <label for="tour-date" class="tour-date">選擇日期：</label>
+              <input type="date" id="tour-date" name="tour-date" required />
+            </div>
+            <fieldset>
+              <div>
+                <legend>選擇時間：</legend>
+              </div>
+              <div class="radio-group">
+                <input
+                  type="radio"
+                  id="morning"
+                  name="tour-time"
+                  value="morning"
+                  checked
+                  required
+                />
+                <label for="morning">上半天</label>
+              </div>
+              <div class="radio-group">
+                <input
+                  type="radio"
+                  id="afternoon"
+                  name="tour-time"
+                  value="afternoon"
+                />
+                <label for="afternoon">下半天</label>
+              </div>
+            </fieldset>
+            <div>
+              <h4>導覽費用：</h4>
+              <p class="tour-price">新台幣 2000元</p>
+            </div>
+            <button type="submit" class="tour-order-button">
+              開始預約行程
+            </button>
+          </form>
+        </div>
+        <div class="attraction-content">
+          <div class="description-container"></div>
+          <br />
+          <div class="address-container">
+            <h3>景點地址：</h3>
+          </div>
+          <div class="transport-container">
+            <h3>交通方式：</h3>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>COPYRIGHT © 2021 台北一日遊</footer>
+    <script src="/static/js/attraction.js"></script>
+  </body>
 </html>
