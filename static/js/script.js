@@ -9,7 +9,7 @@ async function fetchMrtData() {
   try {
     const response = await fetch(`${apiURL}/api/mrts`);
     if (!response.ok) {
-      throw new Error(`API 無回應：${error.message}`);
+      throw new Error(`API 無回應：${response.status}`);
     }
     const data = await response.json();
     const mrt = data["data"];
@@ -102,6 +102,9 @@ const addCardItems = (attractions) => {
   attractions.forEach((attraction) => {
     const card = document.createElement("figure");
     card.className = "attraction-card";
+    card.addEventListener("click", () => {
+      window.location.href = `/attraction/${attraction["id"]}`;
+    });
     const cardImage = document.createElement("img");
     cardImage.className = "attraction-image";
     cardImage.src = attraction["images"][0];
