@@ -10,6 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="/static/css/modal.css" />
     <link rel="stylesheet" href="/static/css/attraction.css" />
   </head>
   <body>
@@ -19,7 +20,8 @@
           <a href="/"> <h1 class="title">台北一日遊</h1></a>
           <div class="nav-container">
             <a href="#" class="order-button">預定行程</a
-            ><a href="#" class="login-button">登入/註冊</a>
+            ><a role="button" class="sign-in-button">登入/註冊</a>
+            <div class="modal-container"></div>
           </div>
         </div>
       </nav>
@@ -98,6 +100,6 @@
     </main>
 
     <footer>COPYRIGHT © 2021 台北一日遊</footer>
-    <script src="/static/js/attraction.js"></script>
+    <script type="module" src="/static/js/attraction.js"></script>
   </body>
 </html>

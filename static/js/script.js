@@ -1,3 +1,4 @@
+import { checkAuthStatus } from "/static/js/auth.js";
 const cardContainer = document.querySelector(".attraction-container");
 const searchInput = document.querySelector(".search-input");
 const apiURL = "";
@@ -5,7 +6,7 @@ let nextPage = 0;
 let isLoading = false;
 let currentKeyword = "";
 
-async function fetchMrtData() {
+const fetchMrtData = async () => {
   try {
     const response = await fetch(`${apiURL}/api/mrts`);
     if (!response.ok) {
@@ -19,8 +20,8 @@ async function fetchMrtData() {
   } catch (error) {
     console.error("無法取得捷運站資料", error.message);
   }
-}
-async function fetchAttractionData(page, keyword = "") {
+};
+const fetchAttractionData = async (page, keyword = "") => {
   if (isLoading || nextPage === null) return;
   isLoading = true;
   try {
@@ -45,7 +46,7 @@ async function fetchAttractionData(page, keyword = "") {
   } finally {
     isLoading = false;
   }
-}
+};
 
 const addCarouseItems = (mrt) => {
   const carousel = document.querySelector(".carousel");
@@ -168,9 +169,13 @@ const selectStation = (station) => {
   fetchAttractionData(nextPage, currentKeyword);
 };
 
-fetchAttractionData(0);
-fetchMrtData();
 document.querySelector(".search-button").addEventListener("click", (e) => {
   e.preventDefault();
   handleSearch();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  fetchAttractionData(0);
+  fetchMrtData();
+  checkAuthStatus();
 });

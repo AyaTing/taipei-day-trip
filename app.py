@@ -1,11 +1,12 @@
 from fastapi import *
 from fastapi.responses import FileResponse
-from routers import attraction, mrts
+from routers import attraction, mrts, user
 from fastapi.staticfiles import StaticFiles
 
 app=FastAPI()
 app.include_router(mrts.router)
 app.include_router(attraction.router)
+app.include_router(user.router)
 
 app.mount("/static", StaticFiles(directory="static"),name="static")
 

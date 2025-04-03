@@ -65,10 +65,11 @@ a {
 }
 
 .order-button,
-.login-button {
+.sign-in-button {
   font-weight: 500;
   padding: 10px;
   color: #666666;
+  cursor: pointer;
 }
 
 main {

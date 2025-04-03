@@ -3,6 +3,7 @@ from mysql.connector import pooling
 from dotenv import load_dotenv
 import os
 from contextlib import contextmanager
+import bcrypt
 
 load_dotenv()
 
@@ -72,3 +73,42 @@ def clear_attraction_data():
         cursor.execute("DELETE FROM `attractions`")
         cursor.execute("ALTER TABLE `attractions` AUTO_INCREMENT = 1")
         db.commit()
+
+
+def get_mrts_data(db):
+    cursor = db.cursor()
+    select_query = "SELECT `mrt`, COUNT(*) AS `attraction_count` FROM `attractions` WHERE `mrt` IS NOT NULL GROUP BY `mrt` ORDER BY `attraction_count` DESC"
+    cursor.execute(select_query)
+    return cursor.fetchall()
+
+
+def create_user(name, email, password, db):
+    cursor = db.cursor()
+    hashed_password = bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
+    insert_query = "INSERT INTO `users`(`name`, `email`, `password`) VALUES(%s, %s, %s)"
+    try:
+        cursor.execute(insert_query, (name, email, hashed_password))
+        db.commit()
+        return cursor.lastrowid
+    except mysql.connector.Error as err:
+        db.rollback()
+        if err.errno == 1062:
+            raise ValueError("此E-mail已註冊。")
+        raise Exception(f"伺服器發生錯誤: {err}")
+
+
+def get_user_by_email(email, db):
+    cursor = db.cursor(dictionary=True)
+    select_query = "SELECT * FROM `users` WHERE `email` = %s"
+    cursor.execute(select_query, (email,))
+    return cursor.fetchone()
+
+def get_user_by_id(user_id, db):
+    cursor = db.cursor(dictionary=True)
+    select_query = "SELECT `id`, `name`, `email` FROM `users` WHERE `id` = %s"
+    cursor.execute(select_query, (user_id,))
+    return cursor.fetchone()
+
+
+def verify_user_password(password, hashed_password):
+    return bcrypt.checkpw(password.encode("utf-8"), hashed_password.encode("utf-8")) 

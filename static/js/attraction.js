@@ -1,3 +1,4 @@
+import { checkAuthStatus } from "/static/js/auth.js";
 const apiURL = "";
 const tourPrice = document.querySelector(".tour-price");
 const radioInput = document.querySelectorAll('input[name="tour-time"]');
@@ -117,4 +118,7 @@ radioInput.forEach((radio) => {
   radio.addEventListener("change", updatePrice);
 });
 
-updatePrice();
+document.addEventListener("DOMContentLoaded", () => {
+  updatePrice();
+  checkAuthStatus();
+});
