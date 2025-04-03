@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, status
 from fastapi.responses import JSONResponse
-from database import get_db_dependency
+from database import get_db_dependency, get_mrts_data
 import mysql.connector
 
 router = APIRouter(prefix="/api", tags=["api"])
@@ -9,10 +9,7 @@ router = APIRouter(prefix="/api", tags=["api"])
 @router.get("/mrts")
 async def get_mrt(db=Depends(get_db_dependency)):
     try:
-        cursor = db.cursor()
-        select_query = "SELECT `mrt`, COUNT(*) AS `attraction_count` FROM `attractions` WHERE `mrt` IS NOT NULL GROUP BY `mrt` ORDER BY `attraction_count` DESC"
-        cursor.execute(select_query)
-        mrts = cursor.fetchall()
+        mrts = get_mrts_data(db)
         mrt_list = [mrt[0] for mrt in mrts]
         return {"data": mrt_list}
     except mysql.connector.Error as err:

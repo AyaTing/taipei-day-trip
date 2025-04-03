@@ -1,0 +1,62 @@
+<dialog class="modal">
+  <div class="modal-content">
+    <button class="close-modal-button"></button>
+    <form class="form-group sign-in-form" method="dialog">
+      <h2 class="form-header">登入會員帳號</h2>
+      <input
+        type="email"
+        placeholder="輸入電子信箱"
+        name="email"
+        id="sign-in-email"
+        required
+      />
+      <input
+        type="password"
+        placeholder="輸入密碼"
+        name="password"
+        id="sign-in-password"
+        required
+      />
+      <button type="submit" class="form-submit-button">登入帳戶</button>
+      <div class="sign-in-message"></div>
+      <div class="toggle-button-container">
+        <p>還沒有帳戶？</p>
+        <button type="button" data-target="signin" class="form-toggle-button">
+          點此註冊
+        </button>
+      </div>
+    </form>
+    <form class="form-group sign-up-form hidden" method="dialog">
+      <h2 class="form-header">註冊會員帳號</h2>
+      <input
+        type="text"
+        placeholder="輸入姓名"
+        name="name"
+        id="sign-up-name"
+        required
+      />
+      <input
+        type="email"
+        placeholder="輸入電子信箱"
+        name="email"
+        id="sign-up-email"
+        required
+      />
+      <input
+        type="password"
+        placeholder="輸入密碼"
+        name="password"
+        id="sign-up-password"
+        required
+      />
+      <button type="submit" data-target="signup" class="form-submit-button">
+        註冊新帳戶
+      </button>
+      <div class="sign-up-message"></div>
+      <div class="toggle-button-container">
+        <p>已經有新帳戶了？</p>
+        <button type="button" class="form-toggle-button">點此登入</button>
+      </div>
+    </form>
+  </div>
+</dialog>
