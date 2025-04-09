@@ -22,12 +22,15 @@ export const checkAuthStatus = async () => {
       signinButton.removeEventListener("click", setupModal);
       signinButton.addEventListener("click", signout);
       localStorage.setItem("USER", JSON.stringify(result.data));
+      return true;
     } else {
       resetUserStatus();
+      return false;
     }
   } catch (error) {
     console.error("檢查認證狀態失敗:", error);
     resetUserStatus();
+    return false;
   }
 };
 

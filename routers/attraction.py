@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, status
 from fastapi.responses import JSONResponse
 from database import get_db_dependency
+from models.attraction_model import get_attraction_by_id
 import mysql.connector
 
 router = APIRouter(prefix="/api", tags=["api"])
@@ -52,28 +53,19 @@ async def get_attractions_list(page: int, keyword: str=None, db=Depends(get_db_d
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             content={"error": True, "message": f"發生未預期錯誤：{err}"},
         )
+    
+
 @router.get("/attraction/{attractionId}")
 async def get_attraction(attractionId: int, db=Depends(get_db_dependency)):
     try:
-        cursor = db.cursor(dictionary=True)
-        select_query = "SELECT `id`, `name`, `category`, `description`, `address`, `transport`, `mrt`, `lat`, `lng` FROM `attractions` WHERE `id` = %s"
-        cursor.execute(select_query, (attractionId,))
-        attraction = cursor.fetchone()
+        attraction = get_attraction_by_id(attractionId, db)
         if not attraction:
             return JSONResponse(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 content={"error": True, "message": f"景點編號不正確"}
             )
-        select_query = "SELECT `image_url` FROM `attraction_images` WHERE `attraction_id` = %s"
-        cursor.execute(select_query, (attractionId,))
-        image_urls = [url["image_url"] for url in cursor.fetchall()]
-        attraction["images"] = image_urls
+        attraction["images"] = attraction.pop("images").split(",")
         return {"data": attraction}
-    except mysql.connector.Error as err:
-        return JSONResponse(
-            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            content={"error": True, "message": f"資料庫連線失敗：{err}"},
-        )
     except Exception as err:
         return JSONResponse(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
