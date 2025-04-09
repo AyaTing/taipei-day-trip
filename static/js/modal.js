@@ -17,6 +17,12 @@ export const setupModal = async (modalUrl, container) => {
     modal.close();
   });
 
+  modal.addEventListener("pointerdown", (e) => {
+    if (e.target === modal) {
+      modal.close();
+    }
+  });
+
   const toggleButtons = modal.querySelectorAll(".form-toggle-button");
   toggleButtons.forEach((button) => {
     button.addEventListener("click", () => {

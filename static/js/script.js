@@ -1,6 +1,8 @@
 import { checkAuthStatus } from "/static/js/auth.js";
 const cardContainer = document.querySelector(".attraction-container");
 const searchInput = document.querySelector(".search-input");
+const orderButton = document.querySelector(".order-button");
+const signinButton = document.querySelector(".sign-in-button");
 const apiURL = "";
 let nextPage = 0;
 let isLoading = false;
@@ -168,6 +170,15 @@ const selectStation = (station) => {
   nextPage = 0;
   fetchAttractionData(nextPage, currentKeyword);
 };
+
+orderButton.addEventListener("click", async () => {
+  const isAuthenticated = await checkAuthStatus();
+  if (isAuthenticated) {
+    window.location.href = "/booking";
+  } else {
+    signinButton.click();
+  }
+});
 
 document.querySelector(".search-button").addEventListener("click", (e) => {
   e.preventDefault();

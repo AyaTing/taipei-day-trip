@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, status, Header
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel, Field, EmailStr
-from database import get_db_dependency, create_user, get_user_by_email, verify_user_password, get_user_by_id
+from database import get_db_dependency
+from models.user_model import create_user, get_user_by_email, verify_user_password, get_user_by_id, SignUpData,SignInData
 import os
 import jwt
 import datetime
@@ -12,15 +12,6 @@ load_dotenv()
 JWT_KEY = os.getenv("JWT_KEY")
 
 router = APIRouter(prefix="/api", tags=["api"])
-
-class SignUpData(BaseModel):
-    name: str = Field(..., min_length=1)
-    email: EmailStr
-    password: str = Field(..., min_length=6)
-
-class SignInData(BaseModel):
-    email: EmailStr
-    password: str = Field(..., min_length=1)
 
 
 @router.post("/user")
