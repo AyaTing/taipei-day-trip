@@ -3,6 +3,16 @@ const apiURL = "";
 const tourPrice = document.querySelector(".tour-price");
 const radioInput = document.querySelectorAll('input[name="tour-time"]');
 const slideContainer = document.querySelector(".slide-container");
+const orderButton = document.querySelector(".order-button");
+const signinButton = document.querySelector(".sign-in-button");
+const tourOrderForm = document.querySelector(".tour-order-form");
+const tomorrow = new Date();
+tomorrow.setDate(tomorrow.getDate() + 1);
+const year = tomorrow.getFullYear();
+const month = String(tomorrow.getMonth() + 1).padStart(2, "0");
+const day = String(tomorrow.getDate()).padStart(2, "0");
+const formattedDate = `${year}-${month}-${day}`;
+document.querySelector("#tour-date").min = formattedDate;
 
 const getAttractionId = () => {
   try {
@@ -116,6 +126,56 @@ const updatePrice = () => {
 
 radioInput.forEach((radio) => {
   radio.addEventListener("change", updatePrice);
+});
+
+const bookTrip = async () => {
+  const token = localStorage.getItem("TOKEN");
+  if (!token) {
+    return;
+  }
+  const date = document.querySelector("#tour-date").value;
+  const time = document.querySelector("input[name='tour-time']:checked").value;
+  const body = { attraction_id: attractionId, date: date, time: time };
+  try {
+    const response = await fetch(`${apiURL}/api/booking`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
+    if (!response.ok) {
+      throw new Error(`伺服器錯誤: ${response.status}`);
+    }
+    const result = await response.json();
+    if (result.ok) {
+      window.location.href = "/booking";
+    } else {
+      console.error("預訂失敗", result.message);
+    }
+  } catch (error) {
+    console.error("預訂失敗", error.message);
+  }
+};
+
+orderButton.addEventListener("click", async () => {
+  const isAuthenticated = await checkAuthStatus();
+  if (isAuthenticated) {
+    window.location.href = "/booking";
+  } else {
+    signinButton.click();
+  }
+});
+
+tourOrderForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const isAuthenticated = await checkAuthStatus();
+  if (isAuthenticated) {
+    await bookTrip();
+  } else {
+    signinButton.click();
+  }
 });
 
 document.addEventListener("DOMContentLoaded", () => {

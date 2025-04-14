@@ -1,11 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Booking</title>
-</head>
-<body>
-  
-</body>
+<html lang="zh-tw">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>台北一日遊</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/modal.css" />
+    <link rel="stylesheet" href="/static/css/booking.css" />
+  </head>
+  <body class="hidden">
+    <header>
+      <nav class="title-bar">
+        <div class="title-container">
+          <a href="/"> <h1 class="title">台北一日遊</h1></a>
+          <div class="nav-container">
+            <a role="button" class="order-button">預定行程</a
+            ><a role="button" class="sign-in-button">登入/註冊</a>
+            <div class="modal-container"></div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="headline-container"><h2 class="headline"></h2></section>
+      <section class="booking_container"></section>
+      <form class="payment-form">
+        <section class="contact-container">
+          <h3>您的聯絡資訊</h3>
+          <div class="input-group">
+            <label for="name">聯絡姓名：</label>
+            <input type="text" name="name" id="name" required />
+          </div>
+          <div class="input-group">
+            <label for="email">聯絡信箱：</label>
+            <input type="email" name="email" id="email" required />
+          </div>
+          <div class="input-group">
+            <label for="tel">手機號碼：</label>
+            <input type="tel" name="tel" required />
+          </div>
+          <p class="notice">
+            請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。
+          </p>
+        </section>
+        <section class="payment-container">
+          <h3>信用卡付款資訊</h3>
+          <div class="input-group">
+            <label for="card-number">卡片號碼：</label>
+            <input
+              type="text"
+              name="card-number"
+              required
+              placeholder="**** **** **** ****"
+              id="card-number"
+            />
+          </div>
+          <div class="input-group">
+            <label for="expiry">過期時間：</label>
+            <input
+              type="text"
+              name="expiry"
+              required
+              placeholder="MM / YY"
+              id="expiry"
+            />
+          </div>
+          <div class="input-group">
+            <label for="cvv">驗證密碼：</label>
+            <input type="tel" name="cvv" required placeholder="CVV" id="cvv" />
+          </div>
+        </section>
+        <div class="order-summary">
+          <p class="total"></p>
+          <button type="submit" class="payment-submit-button">
+            確認訂購並付款
+          </button>
+        </div>
+      </form>
+    </main>
+    <footer>COPYRIGHT © 2021 台北一日遊</footer>
+    <script type="module" src="/static/js/booking.js"></script>
+  </body>
 </html>
