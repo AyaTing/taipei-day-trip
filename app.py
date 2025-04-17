@@ -1,6 +1,6 @@
 from fastapi import *
 from fastapi.responses import FileResponse
-from routers import attraction, mrts, user, booking
+from routers import attraction, mrts, user, booking, order, payconfig
 from fastapi.staticfiles import StaticFiles
 
 app=FastAPI()
@@ -8,6 +8,8 @@ app.include_router(mrts.router)
 app.include_router(attraction.router)
 app.include_router(user.router)
 app.include_router(booking.router)
+app.include_router(order.router)
+app.include_router(payconfig.router)
 
 app.mount("/static", StaticFiles(directory="static"),name="static")
 

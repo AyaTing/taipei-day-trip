@@ -1,11 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thank You</title>
-</head>
-<body>
-  
-</body>
+<html lang="zh-tw">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>台北一日遊</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/modal.css" />
+    <link rel="stylesheet" href="/static/css/thankyou.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="title-bar">
+        <div class="title-container">
+          <a href="/"> <h1 class="title">台北一日遊</h1></a>
+          <div class="nav-container">
+            <a role="button" class="order-button">預定行程</a
+            ><a role="button" class="sign-in-button" data-action="sign-in"
+              >登入/註冊</a
+            >
+            <div class="modal-container"></div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <img src="/static/icons/icon_calendar.png" class="calendar_icon" />
+      <h2>感謝您的訂購</h2>
+      <section class="accordion-container">
+        <div class="accordion-item">
+          <div class="accordion-header">
+            <span class="order-number">載入訂單編號...</span>
+            <span class="accordion-icon">+</span>
+          </div>
+          <div class="accordion-content">
+            <div class="order-detail"></div>
+          </div>
+        </div>
+      </section>
+      <a href="/" class="return-button">返回首頁</a>
+    </main>
+    <footer>COPYRIGHT © 2021 台北一日遊</footer>
+    <script type="module" src="/static/js/thankyou.js"></script>
+  </body>
 </html>

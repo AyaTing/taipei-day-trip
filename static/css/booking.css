@@ -118,6 +118,8 @@ main {
   background: transparent;
   background-image: url(/static/icons/icon_delete.png);
   background-position: center;
+  background-size: 30px 30px;
+  cursor: pointer;
 }
 
 .booking_container img {
@@ -171,6 +173,21 @@ li:first-child {
   padding: 10px;
 }
 
+.input-group > div {
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+  width: 200px;
+  height: 38px;
+  padding: 10px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.tpfield.error {
+  border: 1px solid #ea5504; /* 把容器的邊框變紅色 */
+  background-color: #ffebeb;
+}
+
 .input-group:last-child {
   margin-bottom: 0;
 }
@@ -217,6 +234,7 @@ li:first-child {
   border: none;
   border-radius: 5px;
   align-self: flex-end;
+  cursor: pointer;
 }
 
 .hidden {
