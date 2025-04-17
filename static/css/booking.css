@@ -276,6 +276,9 @@ footer {
   .order-summary {
     padding-right: 10px;
   }
+  .hidden {
+    display: none;
+  }
 }
 @media screen and (max-width: 767px) {
   .headline-container {
@@ -320,6 +323,10 @@ footer {
     flex-direction: column;
     align-items: center;
   }
+  .hidden {
+    display: none;
+  }
+
   .contact-container,
   .payment-container {
     max-width: 450px;
