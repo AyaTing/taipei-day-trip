@@ -335,6 +335,10 @@ footer {
   .slide-container {
     margin-left: 10px;
   }
+  #tour-date {
+    border: 1px solid snow;
+    background-color: #fff;
+  }
 }
 @media screen and (max-width: 767px) {
   header {
@@ -360,5 +364,9 @@ footer {
   }
   .tour-order-button {
     margin-bottom: 0;
+  }
+  #tour-date {
+    border: 1px solid snow;
+    background-color: #fff;
   }
 }
