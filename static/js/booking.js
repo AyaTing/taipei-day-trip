@@ -49,11 +49,6 @@ TPDirect.card.setup({
 });
 
 TPDirect.card.onUpdate((update) => {
-  if (update.canGetPrime) {
-    submitButton.removeAttribute("disabled");
-  } else {
-    submitButton.setAttribute("disabled", true);
-  }
   if (update.status.number === 2) {
     cardNumberInput.classList.add("error");
   } else {
@@ -93,7 +88,6 @@ const setupTapPay = async () => {
 
 const onSubmit = async () => {
   const paymentFormStatus = TPDirect.card.getTappayFieldsStatus();
-  console.log("TapPay Status:", paymentFormStatus); // 測試用
   const name = document.querySelector("#name").value;
   const email = document.querySelector("#email").value;
   const phone = document.querySelector('input[name="phone"]').value;
@@ -105,6 +99,7 @@ const onSubmit = async () => {
     alert("信用卡資訊填寫不完全或有誤，請重新檢查");
     return;
   }
+
   submitButton.setAttribute("disabled", true);
 
   try {
@@ -141,6 +136,7 @@ const onSubmit = async () => {
     const result = await response.json();
 
     if (response.ok && result.data) {
+      alert("付款完成！");
       window.location.href = `/thankyou?number=${result.data.number}`;
     } else {
       alert("訂單建立失敗：" + (result.message || "未知錯誤"));
