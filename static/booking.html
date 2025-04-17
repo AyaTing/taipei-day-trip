@@ -20,7 +20,9 @@
           <a href="/"> <h1 class="title">台北一日遊</h1></a>
           <div class="nav-container">
             <a role="button" class="order-button">預定行程</a
-            ><a role="button" class="sign-in-button">登入/註冊</a>
+            ><a role="button" class="sign-in-button" data-action="sign-in"
+              >登入/註冊</a
+            >
             <div class="modal-container"></div>
           </div>
         </div>
@@ -41,8 +43,8 @@
             <input type="email" name="email" id="email" required />
           </div>
           <div class="input-group">
-            <label for="tel">手機號碼：</label>
-            <input type="tel" name="tel" required />
+            <label for="phone">手機號碼：</label>
+            <input type="phone" name="phone" required />
           </div>
           <p class="notice">
             請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。
@@ -52,27 +54,15 @@
           <h3>信用卡付款資訊</h3>
           <div class="input-group">
             <label for="card-number">卡片號碼：</label>
-            <input
-              type="text"
-              name="card-number"
-              required
-              placeholder="**** **** **** ****"
-              id="card-number"
-            />
+            <div class="tpfield" id="card-number"></div>
           </div>
           <div class="input-group">
             <label for="expiry">過期時間：</label>
-            <input
-              type="text"
-              name="expiry"
-              required
-              placeholder="MM / YY"
-              id="expiry"
-            />
+            <div class="tpfield" id="card-expiration-date"></div>
           </div>
           <div class="input-group">
             <label for="cvv">驗證密碼：</label>
-            <input type="tel" name="cvv" required placeholder="CVV" id="cvv" />
+            <div class="tpfield" id="card-ccv"></div>
           </div>
         </section>
         <div class="order-summary">
@@ -84,6 +74,7 @@
       </form>
     </main>
     <footer>COPYRIGHT © 2021 台北一日遊</footer>
+    <script src="https://js.tappaysdk.com/sdk/tpdirect/v5.19.2"></script>
     <script type="module" src="/static/js/booking.js"></script>
   </body>
 </html>

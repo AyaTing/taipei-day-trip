@@ -76,3 +76,4 @@ async def get_booking(user: dict= Depends(get_current_user), db=Depends(get_db_d
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             content={"error": True, "message": f"發生未預期錯誤：{err}"},
         )
+    
