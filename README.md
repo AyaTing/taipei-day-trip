@@ -2,11 +2,13 @@
 
 [![Demo](https://img.shields.io/badge/Demo-Live-brightgreen?style=flat-square)](https://taipei-day-trip.ayating.lol/)
 
-**線上體驗 Demo:** [https://taipei-day-trip.ayating.lol/](https://taipei-day-trip.ayating.lol/)
+**線上體驗 Demo：** [https://taipei-day-trip.ayating.lol/](https://taipei-day-trip.ayating.lol/)
 
-**測試帳號**
-電子信箱 : abc@abc.com
-密碼 : abcabc
+## 測試帳號
+
+**電子信箱：** abc@abc.com
+
+**密碼：** abcabc
 
 ## 專案簡介
 
