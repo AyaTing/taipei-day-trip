@@ -4,6 +4,10 @@
 
 **線上體驗 Demo:** [https://taipei-day-trip.ayating.lol/](https://taipei-day-trip.ayating.lol/)
 
+**測試帳號**
+電子信箱 : abc@abc.com
+密碼 : abcabc
+
 ## 專案簡介
 
 Taipei Day Trip 是一個為計畫前往台北的旅客所設計的旅遊景點電商網站。使用者可以輕鬆瀏覽豐富的台北景點、查詢相關資訊，並直接完成線上預約與付款。
@@ -78,5 +82,6 @@ Taipei Day Trip 是一個為計畫前往台北的旅客所設計的旅遊景點�
 3.  **自動化維運 (CI/CD)：**
     - 開發者將程式碼推送到 GitHub。
     - **GitHub Actions** 偵測到變更，觸發預設的工作流程。
-    - 安裝在 EC2 上的 **Self-hosted Runner** 會主動向 GitHub 請求並接收這個指派給它的工作
+    - 安裝在 EC2 上的 **Self-hosted Runner** 會主動向 GitHub 請求並接收這個指派給它的工作。
+      （🔒 CI/CD pipeline 已基於資安考量暫時停用 self-hosted runner（非功能性問題）)
     - Runner 在接收到指令後， 便在 EC2 本機上執行自動化腳本，完成拉取程式碼、建置新映像檔、重啟容器等一系列部署動作，實現無縫更新。
